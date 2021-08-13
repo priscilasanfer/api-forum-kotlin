@@ -9,10 +9,10 @@ data class Topico(
         val titulo: String,
         val mensagem: String,
 
-        @ManyToOne(cascade=[CascadeType.ALL])
+        @ManyToOne
         val curso: Curso,
 
-        @ManyToOne(cascade=[CascadeType.ALL])
+        @ManyToOne
         val autor: Usuario,
         @field:Enumerated(EnumType.STRING)
         val status: StatusTopico = StatusTopico.NAO_RESPONDIDO,

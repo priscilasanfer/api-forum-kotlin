@@ -1,5 +1,6 @@
 package br.com.priscilasanfer.forum.controller
 
+import br.com.priscilasanfer.forum.dto.NovoTopicoDto
 import br.com.priscilasanfer.forum.modelo.Topico
 import br.com.priscilasanfer.forum.service.TopicoService
 import org.springframework.web.bind.annotation.*
@@ -22,8 +23,7 @@ class TopicoController(val service: TopicoService) {
     }
 
     @PostMapping
-    @Transactional
-    fun cadastrar(@RequestBody topico: Topico): Topico {
-        return service.cadastrar(topico)
+    fun cadastrar(@RequestBody dto: NovoTopicoDto): Topico {
+        return service.cadastrar(dto)
     }
 }
