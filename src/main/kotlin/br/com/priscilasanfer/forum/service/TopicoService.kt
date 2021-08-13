@@ -2,6 +2,7 @@ package br.com.priscilasanfer.forum.service
 
 import br.com.priscilasanfer.forum.dto.NovoTopicoForm
 import br.com.priscilasanfer.forum.dto.TopicoView
+import br.com.priscilasanfer.forum.mapper.TopicoViewMapper
 import br.com.priscilasanfer.forum.modelo.Topico
 import br.com.priscilasanfer.forum.repository.TopicoRepository
 import org.springframework.stereotype.Service
@@ -10,20 +11,15 @@ import javax.transaction.Transactional
 
 @Service
 class TopicoService(
-        val repository: TopicoRepository,
-        val cursoService: CursoService,
-        val usuarioService: UsuarioService) {
+        private val repository: TopicoRepository,
+        private val topicoViewMapper: TopicoViewMapper,
+        private val topicoFormMapper: TopicoFormMapper
+) {
 
     fun listar(): List<TopicoView> {
         val topicos = repository.findAll()
         return topicos.stream().map { t ->
-            TopicoView(
-                    id = t.id,
-                    titulo = t.titulo,
-                    mensagem = t.mensagem,
-                    status = t.status,
-                    dataCriacao = t.dataCriacao
-            )
+            topicoViewMapper.map(t)
         }.collect(Collectors.toList())
     }
 
@@ -34,24 +30,13 @@ class TopicoService(
             return throw NoSuchElementException("Topico com id ${id} não encontrado")
         }
 
-        return TopicoView(
-                id = topico.get().id,
-                titulo = topico.get().titulo,
-                mensagem = topico.get().mensagem,
-                status = topico.get().status,
-                dataCriacao = topico.get().dataCriacao
-        )
+        return topicoViewMapper.map(topico.get())
 
     }
 
     @Transactional
-    fun cadastrar(dto: NovoTopicoForm) {
-        val topico = Topico(
-                titulo = dto.titulo,
-                mensagem = dto.mensagem,
-                curso = cursoService.buscarPorId(dto.idCurso),
-                autor = usuarioService.buscarPorId(dto.idAutor)
-        )
+    fun cadastrar(form: NovoTopicoForm) {
+        val topico = topicoFormMapper.map(form)
         repository.save(topico)
     }
 }
