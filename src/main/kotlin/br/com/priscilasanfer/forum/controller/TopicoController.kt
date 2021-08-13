@@ -1,10 +1,9 @@
 package br.com.priscilasanfer.forum.controller
 
-import br.com.priscilasanfer.forum.dto.NovoTopicoDto
-import br.com.priscilasanfer.forum.modelo.Topico
+import br.com.priscilasanfer.forum.dto.NovoTopicoForm
+import br.com.priscilasanfer.forum.dto.TopicoView
 import br.com.priscilasanfer.forum.service.TopicoService
 import org.springframework.web.bind.annotation.*
-import javax.transaction.Transactional
 
 
 @RestController
@@ -13,17 +12,17 @@ class TopicoController(val service: TopicoService) {
 
 
     @GetMapping
-    fun listar(): List<Topico> {
+    fun listar(): List<TopicoView> {
         return service.listar()
     }
 
     @GetMapping("/{id}")
-    fun buscaPorId(@PathVariable id: Long): Topico {
+    fun buscaPorId(@PathVariable id: Long): TopicoView {
         return service.buscarPorId(id)
     }
 
     @PostMapping
-    fun cadastrar(@RequestBody dto: NovoTopicoDto): Topico {
+    fun cadastrar(@RequestBody dto: NovoTopicoForm) {
         return service.cadastrar(dto)
     }
 }
