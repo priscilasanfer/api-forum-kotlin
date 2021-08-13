@@ -4,6 +4,7 @@ import br.com.priscilasanfer.forum.dto.NovoTopicoForm
 import br.com.priscilasanfer.forum.dto.TopicoView
 import br.com.priscilasanfer.forum.service.TopicoService
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 
 @RestController
@@ -22,7 +23,7 @@ class TopicoController(val service: TopicoService) {
     }
 
     @PostMapping
-    fun cadastrar(@RequestBody dto: NovoTopicoForm) {
+    fun cadastrar(@RequestBody @Valid dto: NovoTopicoForm) {
         return service.cadastrar(dto)
     }
 }
