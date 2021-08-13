@@ -10,4 +10,15 @@ class TopicoService(val repository: TopicoRepository) {
     fun listar(): List<Topico> {
         return repository.findAll()
     }
+
+    fun buscarPorId(id: Long): Topico{
+        val topico = repository.findById(id)
+
+        if (topico.isEmpty){
+            return throw NoSuchElementException("Topico com id ${id} não encontrado")
+        }
+
+        return topico.get()
+
+    }
 }
