@@ -3,6 +3,7 @@ package br.com.priscilasanfer.forum.service
 import br.com.priscilasanfer.forum.modelo.Topico
 import br.com.priscilasanfer.forum.repository.TopicoRepository
 import org.springframework.stereotype.Service
+import javax.transaction.Transactional
 
 @Service
 class TopicoService(val repository: TopicoRepository) {
@@ -20,5 +21,10 @@ class TopicoService(val repository: TopicoRepository) {
 
         return topico.get()
 
+    }
+
+
+    fun cadastrar(topico: Topico): Topico {
+        return repository.save(topico)
     }
 }

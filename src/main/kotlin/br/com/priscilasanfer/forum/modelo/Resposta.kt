@@ -1,10 +1,7 @@
 package br.com.priscilasanfer.forum.modelo
 
 import java.time.LocalDateTime
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.ManyToOne
+import javax.persistence.*
 
 @Entity
 data class Resposta(
@@ -16,7 +13,7 @@ data class Resposta(
         val solucao: Boolean
 ){
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
     val dataCriacao: LocalDateTime = LocalDateTime.now()
 }

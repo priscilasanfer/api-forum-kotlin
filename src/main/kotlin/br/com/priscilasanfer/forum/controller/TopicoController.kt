@@ -2,10 +2,8 @@ package br.com.priscilasanfer.forum.controller
 
 import br.com.priscilasanfer.forum.modelo.Topico
 import br.com.priscilasanfer.forum.service.TopicoService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import javax.transaction.Transactional
 
 
 @RestController
@@ -21,5 +19,11 @@ class TopicoController(val service: TopicoService) {
     @GetMapping("/{id}")
     fun buscaPorId(@PathVariable id: Long): Topico {
         return service.buscarPorId(id)
+    }
+
+    @PostMapping
+    @Transactional
+    fun cadastrar(@RequestBody topico: Topico): Topico {
+        return service.cadastrar(topico)
     }
 }
