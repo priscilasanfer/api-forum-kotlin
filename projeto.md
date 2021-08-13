@@ -33,3 +33,22 @@ Resumo:
 - Como receber um parâmetro pela URI utilizando a anotação @PathVariable.
 
 
+## 03. Lidando com requisições POST
+
+Anotação @RequestBody
+Por que foi necessário utilizar a anotação @RequestBody no método para cadastrar um novo tópico?
+- Para que o Spring consiga recuperar as informações no corpo da requisição.
+  Sem essa anotação o Spring considera que os parâmetros serão enviados pela URI da requisição HTTP.
+
+Vantagens de se utilizar DTOs
+Qual a vantagem de se utilizar DTOs para receber parâmetros na API?
+- Flexibilizar a representação dos recursos recebidos e enviados pela API.
+  DTOs permitem que a representação dos recursos possa ser flexibilizada, pois a API pode ter diversos endpoints que manipulam um determinado recurso, porém representando-o de formas distintas.
+
+Resumo:
+- Como trabalhar com requisições POST na API com as anotações @PostMapping e @RequestBody;
+- Como testar a API utilizando a ferramenta Postman para disparar requisições HTTP;
+- A criar classes DTO para representar os dados da API;
+- A criar classes Mapper para a conversão de objetos DTO;
+- Como realizar validações utilizando o Bean Validation com as anotações @Valid, @NotEmpty e @Size.
+

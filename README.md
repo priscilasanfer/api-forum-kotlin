@@ -11,3 +11,10 @@ Conteúdo:
 - Aprenda a seguir corretamente os princípios do modelo REST
 - Saiba como tratar exceptions na API
 
+
+## Utils
+comandos docker:
+- docker run -it --name mysql -e MYSQL_ROOT_PASSWORD=mysql -p 3306:3306 -d mysql 
+- docker exec -it mysql bash   
+- mysql -u root -p
+

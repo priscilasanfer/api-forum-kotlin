@@ -1,3 +1,5 @@
+Script para popular o banco caso haja necessidade
+
 DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS curso;
 DROP TABLE IF EXISTS resposta;
