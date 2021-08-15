@@ -1,3 +1,5 @@
+# Camada WEB
+
 ## 01. Do server-side para o REST
 
 Quais das seguintes alternativas representam vantagens de se utilizar APIs REST?
@@ -83,3 +85,26 @@ Resumo
 - A criar uma classe Controller Advice para tratamento de erros na API, utilizando as anotações @RestControllerAdvice e @ExceptionHandler;
 - A realizar o tratamento de erros 500 que ocorrerem na API;
 - A realizar o tratamento de erros 400 que ocorrerem na API.
+
+
+# Camada de Persistência
+
+01. Spring Data JPA   
+As configurações da JPA geralmente ficam em um arquivo chamado ```persistence.xml```, mas ao utilizar o Spring Boot não precisamos criar tal arquivo. Por que?
+- Porque as configurações devem ser realizadas no arquivo properties/yml da aplicação.
+  O Spring Boot carrega as configurações da JPA via arquivo de configurações application.properties ou application.yml.
+
+02. Repository vs DAO
+Qual a vantagem de se utilizar interfaces repository ao invés de classes DAO na camada de persistência da API?
+- Simplicidade.
+  Sem dúvidas, escrever apenas o código da interface sem a necessidade de se criar uma classe que a implemente é mais simples e produtivo.
+  
+
+Resumo:
+- Adicionar o Spring Data JPA na API, incluindo suas dependências no arquivo pom.xml;
+- Configurar o Spring Data JPA via propriedades no arquivo application.yml;
+- Mapear as classes de domínio como entidades JPA, utilizando as anotações @Entity, @Id, @ManyToOne e @OneToMany;
+- Criar interfaces repository para acesso ao banco de dados, herdando da interface JpaRepository do Spring Data JPA;
+- Testar as mudanças na API utilizando o Postman para envio de requisições HTTP.
+
+

@@ -1,5 +1,6 @@
 # Curso API REST com Kotlin e Spring Boot
 
+## Camada WEB
 Disponível: https://cursos.alura.com.br/course/api-rest-kotlin-spring-boot-camada-web  
 
 Conteúdo:
@@ -11,6 +12,17 @@ Conteúdo:
 - Aprenda a seguir corretamente os princípios do modelo REST
 - Saiba como tratar exceptions na API
 
+
+## Camada de persistência
+
+Disponível: https://cursos.alura.com.br/course/api-rest-kotlin-spring-boot-camada-persistencia  
+
+- Aprenda a utilizar o Spring Data JPA para a camada de persistência da API
+- Utilize o Flyway como ferramenta de migrations
+- Aprenda a utilizar paginação e ordenação nas consultas ao banco de dados
+- Utilize cache para melhorar a performance de consultas
+- Escreva queries personalizadas nas interfaces repository
+- Aprenda a acessar a interface do EntityManager
 
 ## Utils
 comandos docker:
