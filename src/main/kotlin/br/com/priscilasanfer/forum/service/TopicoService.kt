@@ -3,6 +3,7 @@ package br.com.priscilasanfer.forum.service
 import br.com.priscilasanfer.forum.dto.AtualizacaoTopicoForm
 import br.com.priscilasanfer.forum.dto.NovoTopicoForm
 import br.com.priscilasanfer.forum.dto.TopicoView
+import br.com.priscilasanfer.forum.exception.NotFoundExeception
 import br.com.priscilasanfer.forum.mapper.TopicoFormMapper
 import br.com.priscilasanfer.forum.mapper.TopicoViewMapper
 import br.com.priscilasanfer.forum.repository.TopicoRepository
@@ -26,7 +27,7 @@ class TopicoService(
     }
 
     fun buscarPorId(id: Long): TopicoView {
-        val topico = repository.findById(id).orElseThrow { NoSuchElementException("Topico com ${id} não encontrado") }
+        val topico = repository.findById(id).orElseThrow { NotFoundExeception("Topico com id: ${id} não encontrado") }
         return topicoViewMapper.map(topico)
     }
 
@@ -40,7 +41,7 @@ class TopicoService(
 
 
     fun atualizar(form: AtualizacaoTopicoForm, id: Long): TopicoView {
-        var topicoAtual = repository.findById(id).orElseThrow { NoSuchElementException("Topico com ${id} não encontrado") }
+        var topicoAtual = repository.findById(id).orElseThrow { NotFoundExeception("Topico com id: ${id} não encontrado") }
         BeanUtils.copyProperties(form, topicoAtual)
         repository.save(topicoAtual)
         return topicoViewMapper.map(topicoAtual)
