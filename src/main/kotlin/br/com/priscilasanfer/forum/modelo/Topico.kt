@@ -17,7 +17,7 @@ data class Topico(
         @field:Enumerated(EnumType.STRING)
         val status: StatusTopico = StatusTopico.NAO_RESPONDIDO,
 
-        @OneToMany(cascade=[CascadeType.ALL], orphanRemoval = true)
+        @OneToMany(mappedBy = "topico")
         @JsonIgnore
         val resposta: List<Resposta> = ArrayList()
 ) {
