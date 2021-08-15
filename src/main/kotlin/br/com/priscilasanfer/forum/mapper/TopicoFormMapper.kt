@@ -1,8 +1,9 @@
-package br.com.priscilasanfer.forum.service
+package br.com.priscilasanfer.forum.mapper
 
 import br.com.priscilasanfer.forum.dto.NovoTopicoForm
-import br.com.priscilasanfer.forum.mapper.Mapper
 import br.com.priscilasanfer.forum.modelo.Topico
+import br.com.priscilasanfer.forum.service.CursoService
+import br.com.priscilasanfer.forum.service.UsuarioService
 import org.springframework.stereotype.Component
 
 @Component

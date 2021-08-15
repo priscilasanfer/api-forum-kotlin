@@ -6,8 +6,8 @@ import javax.persistence.*
 
 @Entity
 data class Topico(
-        val titulo: String,
-        val mensagem: String,
+        var titulo: String,
+        var mensagem: String,
 
         @ManyToOne
         val curso: Curso,
