@@ -32,4 +32,9 @@ class TopicoController(val service: TopicoService) {
     fun atualizar(@RequestBody @Valid form: AtualizacaoTopicoForm, @PathVariable id: Long){
         return service.atualizar(form, id)
     }
+
+    @DeleteMapping("/{id}")
+    fun deletar(@PathVariable id: Long){
+        return service.deletar(id)
+    }
 }

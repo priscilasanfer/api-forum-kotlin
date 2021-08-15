@@ -42,4 +42,8 @@ class TopicoService(
         BeanUtils.copyProperties(form, topicoAtual)
         repository.save(topicoAtual)
     }
+
+    fun deletar(id: Long) {
+        repository.deleteById(id)
+    }
 }
