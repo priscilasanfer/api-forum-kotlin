@@ -57,5 +57,14 @@ Na API, temos vários pontos de conflitos de URI, ou seja, vários métodos em c
 Por que o Spring não identificou isso como um problema e lançou uma exceção ao inicializar a API?
 - URIs podem ser repetidas na API, desde que os métodos HTTP sejam distintos.
   Na API temos a mesma URI mapeada em vários métodos, mas cada método possui um verbo HTTP distinto.
-  
 
+Para saber mais: Modelo de maturidade de Richardson
+Há diversas boas práticas ao se trabalhar com APIs REST, como a identificação de recursos, a utilização correta dos verbos e códigos HTTP, dentre outras.
+Existe um modelo de classificação de aderência ao modelo REST conhecido como Modelo de maturidade de Richardson, o qual define níveis de maturidade na aderência ao modelo REST.
+Cada nível determina algum princípio do REST que deve ser seguido por uma API, sendo que ao chegar ao último nível ela estará totalmente alinhada às boas práticas do REST, o que é bastante vantajoso.
+Você pode entender melhor tal modelo lendo [este artigo](https://martinfowler.com/articles/richardsonMaturityModel.html).
+
+Resumo:
+- A trabalhar com requisições PUT na API com a anotação @PutMapping;
+- A trabalhar com requisições DELETE na API com a anotação @DeleteMapping;
+- A seguir boas práticas do REST nos retornos da API, com a utilização correta dos códigos HTTP.
