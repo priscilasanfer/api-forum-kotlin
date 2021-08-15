@@ -68,3 +68,18 @@ Resumo:
 - A trabalhar com requisições PUT na API com a anotação @PutMapping;
 - A trabalhar com requisições DELETE na API com a anotação @DeleteMapping;
 - A seguir boas práticas do REST nos retornos da API, com a utilização correta dos códigos HTTP.
+
+
+## 05. Tratamento de erros na API
+
+DTO de erros  
+Por que é interessante criar um DTO para representar os erros devolvidos pela API?
+- Para limitar as informações devolvidas pela API em casos de erros.
+A utilização de DTO simplifica e limita o retorno das informações pela API.
+
+Resumo
+
+- As classes dos códigos HTTP e seus significados;
+- A criar uma classe Controller Advice para tratamento de erros na API, utilizando as anotações @RestControllerAdvice e @ExceptionHandler;
+- A realizar o tratamento de erros 500 que ocorrerem na API;
+- A realizar o tratamento de erros 400 que ocorrerem na API.
