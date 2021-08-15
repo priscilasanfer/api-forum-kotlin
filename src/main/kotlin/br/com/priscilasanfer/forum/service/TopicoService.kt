@@ -31,16 +31,19 @@ class TopicoService(
     }
 
     @Transactional
-    fun cadastrar(form: NovoTopicoForm) {
+    fun cadastrar(form: NovoTopicoForm): TopicoView {
         val topico = topicoFormMapper.map(form)
         repository.save(topico)
+
+        return topicoViewMapper.map(topico)
     }
 
 
-    fun atualizar(form: AtualizacaoTopicoForm, id: Long) {
+    fun atualizar(form: AtualizacaoTopicoForm, id: Long): TopicoView {
         var topicoAtual = repository.findById(id).orElseThrow { NoSuchElementException("Topico com ${id} não encontrado") }
         BeanUtils.copyProperties(form, topicoAtual)
         repository.save(topicoAtual)
+        return topicoViewMapper.map(topicoAtual)
     }
 
     fun deletar(id: Long) {

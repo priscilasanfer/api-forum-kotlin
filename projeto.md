@@ -52,3 +52,10 @@ Resumo:
 - A criar classes Mapper para a conversão de objetos DTO;
 - Como realizar validações utilizando o Bean Validation com as anotações @Valid, @NotEmpty e @Size.
 
+## 04. Lidando com requisições PUT e DELETE
+Na API, temos vários pontos de conflitos de URI, ou seja, vários métodos em classes controllers possuem a mesma URI. 
+Por que o Spring não identificou isso como um problema e lançou uma exceção ao inicializar a API?
+- URIs podem ser repetidas na API, desde que os métodos HTTP sejam distintos.
+  Na API temos a mesma URI mapeada em vários métodos, mas cada método possui um verbo HTTP distinto.
+  
+
