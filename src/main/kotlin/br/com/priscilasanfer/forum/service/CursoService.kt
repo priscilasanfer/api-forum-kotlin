@@ -6,10 +6,9 @@ import br.com.priscilasanfer.forum.repository.CursoRespository
 import org.springframework.stereotype.Service
 
 @Service
-class CursoService(val repository: CursoRespository) {
+class CursoService(private val repository: CursoRespository) {
 
     fun buscarPorId(id: Long): Curso {
-        val curso = repository.findById(id).orElseThrow { NotFoundExeception("Curso com id ${id} não encontrado") }
-        return curso
+        return repository.findById(id).orElseThrow { NotFoundExeception("Curso com id ${id} não encontrado") }
     }
 }

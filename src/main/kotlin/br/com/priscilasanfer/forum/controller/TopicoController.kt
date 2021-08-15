@@ -6,6 +6,7 @@ import br.com.priscilasanfer.forum.dto.TopicoView
 import br.com.priscilasanfer.forum.service.TopicoService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 import java.net.URI
@@ -28,6 +29,7 @@ class TopicoController(val service: TopicoService) {
     }
 
     @PostMapping
+    @Transactional
     fun cadastrar(
             @RequestBody @Valid dto: NovoTopicoForm,
             uriBuilder: UriComponentsBuilder
@@ -38,12 +40,14 @@ class TopicoController(val service: TopicoService) {
     }
 
     @PutMapping("/{id}")
+    @Transactional
     fun atualizar(@RequestBody @Valid form: AtualizacaoTopicoForm, @PathVariable id: Long): ResponseEntity<TopicoView> {
         val topicoAtualizado = service.atualizar(form, id)
         return ResponseEntity.ok(topicoAtualizado)
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deletar(@PathVariable id: Long) {
         return service.deletar(id)

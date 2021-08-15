@@ -10,7 +10,6 @@ import br.com.priscilasanfer.forum.repository.TopicoRepository
 import org.springframework.beans.BeanUtils
 import org.springframework.stereotype.Service
 import java.util.stream.Collectors
-import javax.transaction.Transactional
 
 @Service
 class TopicoService(
@@ -20,10 +19,10 @@ class TopicoService(
 ) {
 
     fun listar(): List<TopicoView> {
-        val topicos = repository.findAll()
-        return topicos.stream().map { t ->
-            topicoViewMapper.map(t)
-        }.collect(Collectors.toList())
+        return repository.findAll()
+                .stream().map { t ->
+                    topicoViewMapper.map(t)
+                }.collect(Collectors.toList())
     }
 
     fun buscarPorId(id: Long): TopicoView {
@@ -31,7 +30,6 @@ class TopicoService(
         return topicoViewMapper.map(topico)
     }
 
-    @Transactional
     fun cadastrar(form: NovoTopicoForm): TopicoView {
         val topico = topicoFormMapper.map(form)
         repository.save(topico)
