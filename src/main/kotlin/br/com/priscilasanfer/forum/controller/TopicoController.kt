@@ -19,8 +19,8 @@ class TopicoController(val service: TopicoService) {
 
 
     @GetMapping
-    fun listar(): List<TopicoView> {
-        return service.listar()
+    fun listar(@RequestParam(required = false) nomeCurso: String?): List<TopicoView> {
+        return service.listar(nomeCurso)
     }
 
     @GetMapping("/{id}")
