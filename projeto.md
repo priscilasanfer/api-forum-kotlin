@@ -126,3 +126,24 @@ Como o Flyway sabe quais migrações já foram executadas no banco de dados da a
 - Como validar a criação correta do schema do banco de dados pelas migrations, analisando a estrutura do banco de dados que foi gerada pelo Flyway.
 
 
+## 03. Filtros, paginação e ordenação
+
+01. Para saber mais: Flexibilidade na paginação e ordenação
+
+O mecanismo de paginação/ordenação do Spring Boot é bastante flexível, permitindo que sejam realizadas consultas combinando paginação e ordenação, inclusive de múltiplos campos ao mesmo tempo.
+Por exemplo, podemos disparar a seguinte requisição:
+
+```
+/topicos?size=25&sort=dataCriacao,desc&sort=titulo&page=2
+```
+
+O Spring Boot saberá combinar todos esses parâmetros de paginação e ordenação, realizando a consulta conforme o solicitado.
+Saiba mais sobre os recursos de paginação e ordenação consultando a [documentação oficial do Spring Boot](https://docs.spring.io/spring-data/rest/docs/current/reference/html/#paging-and-sorting).
+
+02. Resumo:
+
+- A criar métodos de consultas com filtros nos repositórios da API, utilizando o padrão de nomenclatura findBy do Spring Data JPA;
+- Como realizar paginação e ordenação nas consultas ao banco de dados utilizando a interface Pageable do Spring Data JPA;
+- Como disparar requisições no Postman utilizando os parâmetros size, page e sort para o retorno de dados paginados;
+- A modificar os parâmetros default de paginação e ordenação com a utilização da anotação @PageableDefault.
+
