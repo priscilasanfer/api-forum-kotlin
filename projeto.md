@@ -89,7 +89,7 @@ Resumo
 
 # Camada de Persistência
 
-01. Spring Data JPA   
+## 01. Spring Data JPA   
 As configurações da JPA geralmente ficam em um arquivo chamado ```persistence.xml```, mas ao utilizar o Spring Boot não precisamos criar tal arquivo. Por que?
 - Porque as configurações devem ser realizadas no arquivo properties/yml da aplicação.
   O Spring Boot carrega as configurações da JPA via arquivo de configurações application.properties ou application.yml.
@@ -106,5 +106,23 @@ Resumo:
 - Mapear as classes de domínio como entidades JPA, utilizando as anotações @Entity, @Id, @ManyToOne e @OneToMany;
 - Criar interfaces repository para acesso ao banco de dados, herdando da interface JpaRepository do Spring Data JPA;
 - Testar as mudanças na API utilizando o Postman para envio de requisições HTTP.
+
+## 02. Migrations com Flyway
+
+01. Para saber mais: hibernate.hbm2ddl.auto
+Em aplicações que não utilizam migrations, é comum utilizar a propriedade ```hibernate.hbm2ddl.auto```, a qual indica ao hibernate uma estratégia para geração automática do schema do banco de dados.
+Porém, tal prática deve ser utilizada apenas em ambiente de desenvolvimento, pois no ambiente de produção devemos ter um controle maior com o schema do banco de dados, para evitar que o hibernate cause um efeito colateral ao realizar atualizações automáticas nele.
+Conheça mais detalhes sobre esse assunto na [documentação do Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization).
+
+02. Execução das migrations
+Como o Flyway sabe quais migrações já foram executadas no banco de dados da aplicação? 
+- Consultando a tabela de migrations.
+  O Flyway mantém uma tabela no banco de dados para armazenar informações sobre as migrations executadas.
+
+03. Resumo:
+- Que utilizar o recurso de migrations ajuda a manter um histórico da evolução do schema do banco de dados da API;
+- Como adicionar o Flyway como ferramenta de migration na API, via dependência no arquivo pom.xml;
+- Como definir as migrations da API, criando scripts SQL na pasta src/main/resources/db/migrations;
+- Como validar a criação correta do schema do banco de dados pelas migrations, analisando a estrutura do banco de dados que foi gerada pelo Flyway.
 
 
